@@ -453,3 +453,14 @@ var scrollme = ( function( $ )
 	// ----------------------------------------------------------------------------------------------------
 
 })( jQuery );
+
+
+//include modernizr with caching
+jQuery.ajax({
+      url: "modernizr.2.8.3.js",
+      dataType: "script",
+      cache: true
+});
+
+//avoid initialize Scrollme on touchable devices (waiting for jQuery iOS-scrolling workaround [DOM freezed])
+scrollme.init_if = function() { return( !Modernizr.touch ); }
